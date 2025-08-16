@@ -10,12 +10,15 @@
 
 ### Front End Pages/Functionality
 - Home Page
-    - ### requirements first then
-    - Featured kickstarters
-- CreateNew Fundraiser Page
-    - Form with fundraiser details
-    - Abilities to submit
-    - Nice error pages for validation
+  - ### requirements first then
+  - Featured kickstarters
+- Create New Fundraiser Page
+  - Form with fundraiser details
+  - Abilities to submit
+  - Nice error pages for validation
+- Display Fundraiser
+  - Shows all information about fundraiser
+  - Show all pledges made so far
 
 - {{ A page on the front end }}
     - {{ A list of dot-points showing functionality is available on this page }}
@@ -32,7 +35,15 @@ It might look messy here in the PDF, but once it's rendered it looks very neat!
 
 It can be helpful to keep the markdown preview open in VS Code so that you can see what you're typing more easily. }}
 
-| URL | HTTP Method | Purpose | Request Body | Success Response Code | Authentication / Authorisation | | --- | ----------- | ------- | ------------ | --------------------- | ------------------ |
-|/ fundraisers | GET | Fetch all the fundraisers | N / A | 201 | None | |/ fundraisers | POST | Create a new fundraiser | JSON Payload | 201 | Any logged in user |
+| URL | HTTP Method | Purpose | Request Body | Success Response Code | Authentication / Authorisation | 
+| --- | ----------- | ------- | ------------ | --------------------- | ------------------ |
+|/fundraisers/ | GET | Fetch all the fundraisers | N/A | 201 | None | |/ fundraisers | POST | Create a new fundraiser | JSON Payload | 201 | Any logged in user |
+|/fundraisers/ | POST | Create a new fundraiser | JSON Payload | 201 | Any logged in user |
+|/fundraisers/1/ | text | text | text | text | text |
+|/pledges/ | GET | Fetch all the pledges | N/A | 200 | Any logged in user |
+|/pledges/ | POST | Create a new pledge | JSON Payload {"fundraiser_id"} | 201 | Any logged in user |
+
+
+
 ### DB Schema
-![]( {{ ./relative/path/to/your/schema/image.png }} )
+![](database.drawio.svg)
