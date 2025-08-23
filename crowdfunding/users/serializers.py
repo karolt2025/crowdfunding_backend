@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import CustomUser
 
 class CustomUserSerializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source='id')
+    # user = serializers.ReadOnlyField(source='id')
 
     class Meta:
         model = CustomUser
