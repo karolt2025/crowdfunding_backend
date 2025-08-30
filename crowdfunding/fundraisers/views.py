@@ -4,6 +4,7 @@ from rest_framework import status, permissions
 from django.http import Http404
 from .models import Fundraiser, Pledge
 from .serializers import FundraiserSerializer, PledgeSerializer, FundraiserDetailSerializer
+from .permissions import IsOwnerOrReadOnly
 
 class FundraiserList(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -28,10 +29,15 @@ class FundraiserList(APIView):
         )
 
 class FundraiserDetail(APIView):
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly
+    ]
 
     def get_object(self, pk):
         try:
             fundraiser = Fundraiser.objects.get(pk=pk)
+            self.check_object_permissions(self.request, fundraiser)
             return fundraiser
         except Fundraiser.DoesNotExist:
             raise Http404
