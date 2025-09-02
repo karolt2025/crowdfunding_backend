@@ -16,6 +16,16 @@ class PledgeSerializer(serializers.ModelSerializer):
         model = apps.get_model('fundraisers.Pledge')
         fields = '__all__'
 
+    # def update (self, instance, validated_data):
+    #     instance.id = validated_data.get('id', instance.id)
+    #     instance.supporter = validated_data.get('supporter', instance.supporter)
+    #     instance.amount = validated_data.get('amount', instance.amount)
+    #     instance.comment = validated_data.get('comment', instance.comment)
+    #     instance.anonymous = validated_data.get('anonymous', instance.anonymous)
+    #     instance.fundraiser = validated_data.get('fundraiser', instance.fundraiser)
+    #     instance.save()
+    #     return instance
+
 class FundraiserDetailSerializer(FundraiserSerializer):
     pledges = PledgeSerializer(many=True, read_only=True)
 

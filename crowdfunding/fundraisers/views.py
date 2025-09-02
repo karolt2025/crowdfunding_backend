@@ -64,6 +64,18 @@ class FundraiserDetail(APIView):
             )
 
 class PledgeList(APIView):
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+    ]
+
+    def get_object(self, pk):
+        try:
+            pledges = Pledge.objects.get(pk=pk)
+            self.check_object_permissions(self.request, pledges)
+            return pledges
+        except Pledge.DoesNotExist:
+            raise Http404
+
     def get(self, request):
         pledges = Pledge.objects.all()
         serializer = PledgeSerializer(pledges, many=True)
@@ -77,6 +89,22 @@ class PledgeList(APIView):
                 serializer.data,
                 status=status.HTTP_201_CREATED
             )
+        else:
+            return Response(
+                serializer.errors,
+                status=status.HTTP_400_BAD_REQUEST
+            )
+    
+    def put(self, request):
+        pledges = self.get_object(request.data.get('id'))
+        serializer =PledgeSerializer(
+            instance=pledges,
+            data=request.data,
+            partial=True
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
         else:
             return Response(
                 serializer.errors,
