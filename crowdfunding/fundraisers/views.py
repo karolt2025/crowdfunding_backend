@@ -7,7 +7,8 @@ from .serializers import FundraiserSerializer, PledgeSerializer, FundraiserDetai
 from .permissions import IsOwnerOrReadOnly
 
 class FundraiserList(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly
+    ]
 
     def get(self, request):
         fundraisers = Fundraiser.objects.all()
@@ -110,4 +111,3 @@ class PledgeList(APIView):
                 serializer.errors,
                 status=status.HTTP_400_BAD_REQUEST
             )
-
