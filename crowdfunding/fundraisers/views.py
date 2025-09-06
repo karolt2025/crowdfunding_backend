@@ -24,6 +24,10 @@ class FundraiserList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+        print("Headers:", request.headers)
+        print("User:", request.user)
+        print("Authenticated:", request.user.is_authenticated)
+    
         serializer = FundraiserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(owner=request.user)
