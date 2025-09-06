@@ -47,3 +47,15 @@ It can be helpful to keep the markdown preview open in VS Code so that you can s
 
 ### DB Schema
 ![](database.drawio.svg)
+
+Link to deployed project: https://karolt-crowdfunding-70503c219ccc.herokuapp.com/fundraisers/
+
+Working POST endpoint (auth-token)
+![alt text](<Screenshot 2025-09-06 at 12.49.36 pm.png>)
+
+Working GET endpoint (fundraisers)
+![alt text](<Screenshot 2025-09-06 at 12.50.36 pm.png>)
+
+Working PUT endpoint (fundraisers)
+![alt text](<Screenshot 2025-09-06 at 12.47.49 pm.png>)
+
