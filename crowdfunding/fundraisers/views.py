@@ -10,6 +10,14 @@ class FundraiserList(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly
     ]
 
+    # def get_object(self, pk):
+    #     try:
+    #         fundraiser = Fundraiser.objects.get(pk=pk)
+    #         self.check_object_permissions(self.request, fundraiser)
+    #         return fundraiser
+    #     except Fundraiser.DoesNotExist:
+    #         raise Http404
+
     def get(self, request):
         fundraisers = Fundraiser.objects.all()
         serializer = FundraiserSerializer(fundraisers, many=True)

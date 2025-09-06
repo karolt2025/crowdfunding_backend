@@ -64,13 +64,18 @@ class FundraiserDetailSerializer(FundraiserSerializer):
     def update(self, instance, validated_data):
         instance.title = validated_data.get('title', instance.title)
         instance.description = validated_data.get('description', instance.description)
-        instance.goal = validated_data.get('goal', instance.goal)
-        instance.image = validated_data.get('image', instance.image)
         instance.is_open = validated_data.get('is_open', instance.is_open)
+        instance.deadline = validated_data.get('deadline', instance.deadline)
+        instance.goal_amount = validated_data.get('goal_amount', instance.goal_amount)
+        instance.item_name = validated_data.get('item_name', instance.item_name)
+        instance.price = validated_data.get('price', instance.price)
+        instance.quantity_needed = validated_data.get('quantity_needed', instance.quantity_needed)
+        instance.external_url = validated_data.get('external_url', instance.external_url)
+        instance.image = validated_data.get('image', instance.image)
         instance.owner = validated_data.get('owner', instance.owner)
         instance.save()
         return instance
-    
+
 # class ItemSerializer(serializers.ModelSerializer):
 #     quantity_funded = serializers.SerializerMethodField()
 #     quantity_remaining = serializers.SerializerMethodField()
