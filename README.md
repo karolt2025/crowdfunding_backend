@@ -3,10 +3,10 @@
 
 ## Planning:
 ### Concept/Name
-{{ Include a short description of your website concept here. }}
+The website concept is a fundraiser to give gifts to underprivileged children. The fundraiser will have an option to either raise a certain amount of money or pledge specific items (through amount).  
 
 ### Intended Audience/User Stories
-{{ Who are your intended audience? How will they use the website? }}
+Intended audience is anyone who wants support/donate to underpriviledged children. 
 
 ### Front End Pages/Functionality
 - Home Page
@@ -59,3 +59,9 @@ Working GET endpoint (fundraisers)
 Working PUT endpoint (fundraisers)
 ![alt text](<Screenshot 2025-09-06 at 12.47.49 pm.png>)
 
+Steps:
+1. Create a user using POST person
+2. Log in
+3. Check all available fundraisers using GET fundraiser
+4. Call POST api-auth, create a fundraiser using POST fundraiser 
+5. Pledge using POST pledge
